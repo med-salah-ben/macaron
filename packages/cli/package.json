@@ -1,0 +1,78 @@
+{
+  "name": "uimix",
+  "version": "0.0.5",
+  "description": "Compiler for UIMix",
+  "homepage": "https://github.com/seanchas116/uimix",
+  "bugs": {
+    "url": "https://github.com/seanchas116/uimix/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanchas116/uimix.git"
+  },
+  "license": "MIT",
+  "author": "Ryohei Ikegami",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "uimix": "bin/uimix.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "run-z build:tsc build:esbuild",
+    "build:esbuild": "node build.cjs",
+    "build:tsc": "tsc",
+    "dev": "run-z build:esbuild dev:esbuild",
+    "dev:esbuild": "node build.cjs --watch",
+    "lint": "eslint src",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "chokidar": "^3.5.3",
+    "clean-css": "^5.3.2",
+    "data-uri-to-buffer": "^4.0.1",
+    "glob": "^9.3.5",
+    "globby": "^13.1.4",
+    "image-size": "^1.0.2",
+    "lodash-es": "^4.17.21",
+    "mime-types": "^2.1.35",
+    "minimatch": "^7.4.6",
+    "mkdirp": "^2.1.6",
+    "prettier": "^2.8.8",
+    "tiny-typed-emitter": "^2.1.0",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/clean-css": "^4.2.6",
+    "@types/glob": "^8.1.0",
+    "@types/lodash-es": "^4.17.7",
+    "@types/mime-types": "^2.1.1",
+    "@types/path-browserify": "^1.0.0",
+    "@types/prettier": "^2.7.2",
+    "@types/react": "^18.2.0",
+    "@types/shelljs": "^0.8.12",
+    "@types/tmp": "^0.2.3",
+    "@uimix/adapter-types": "workspace:*",
+    "@uimix/elements-react": "workspace:*",
+    "@uimix/foundation": "workspace:*",
+    "@uimix/model": "workspace:*",
+    "csstype": "^3.1.2",
+    "esbuild": "^0.17.18",
+    "esbuild-node-externals": "^1.7.0",
+    "esbuild-register": "^3.4.2",
+    "html-react-parser": "^3.0.16",
+    "path-browserify": "^1.0.1",
+    "react": "^18.2.0",
+    "react-element-to-jsx-string": "^15.0.0",
+    "run-z": "^1.11.0",
+    "shelljs": "^0.8.5",
+    "tmp": "^0.2.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3",
+    "vitest": "^0.30.1",
+    "yjs": "^13.6.0"
+  }
+}

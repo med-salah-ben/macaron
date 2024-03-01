@@ -1,0 +1,216 @@
+import React from "react";
+import * as external__Header from "./stories/Header";
+import * as external__Button from "./stories/Button";
+import * as external__Button1 from "@mui/material/Button";
+import image1 from "./nested/images/black-pattern.png";
+import image2 from "./nested/images/icon.png";
+import image3 from "./nested/images/screenshot.png";
+import image4 from "./nested/images/white-pattern.png";
+import "./button.uimix.css";
+import "./components.uimix.css";
+import "./landing.uimix.css";
+import "./nested/landing.uimix.css";
+
+function applyOverrides(
+  rootProps: any,
+  element: React.ReactElement
+): React.ReactElement {
+  const { "data-refID": refID, ...props } = element.props;
+
+  let additionalProps: any = rootProps;
+  for (const id of refID ?? []) {
+    additionalProps = additionalProps[id + "Props"] ?? {};
+  }
+  additionalProps = { ...additionalProps };
+  for (const key of Object.keys(additionalProps)) {
+    if (key.endsWith("Props")) {
+      delete additionalProps[key];
+    }
+  }
+
+  const result = React.cloneElement(
+    { ...element, props },
+    {
+      ...additionalProps,
+      className: additionalProps.className
+        ? props.className + " " + additionalProps.className
+        : props.className,
+      children:
+        additionalProps.children ??
+        React.Children.map(element.props.children, (child) => {
+          if (React.isValidElement(child)) {
+            return applyOverrides(rootProps, child);
+          } else {
+            return child;
+          }
+        }),
+    }
+  );
+  return result;
+}
+
+export const Stack = React.forwardRef((props, ref) => {
+  return applyOverrides(
+    { ...props, ref },
+    <div className={"uimix-StackK4dvYK"}>
+      <div
+        className={"uimix-StackK4dvYK__item_0"}
+        data-refID={["item_0"]}
+      ></div>
+      <div
+        className={"uimix-StackK4dvYK__item_1"}
+        data-refID={["item_1"]}
+      ></div>
+      <div
+        className={"uimix-StackK4dvYK__hidden_Item"}
+        data-refID={["hidden_Item"]}
+      ></div>
+      <div
+        className={"uimix-StackK4dvYK__item_2"}
+        data-refID={["item_2"]}
+      ></div>
+      <div className={"uimix-StackK4dvYK__text"} data-refID={["text"]}>
+        {"Hello, world!"}
+      </div>
+    </div>
+  );
+}) as React.FC<
+  JSX.IntrinsicElements["div"] & {
+    item_0Props?: JSX.IntrinsicElements["div"];
+    item_1Props?: JSX.IntrinsicElements["div"];
+    hidden_ItemProps?: JSX.IntrinsicElements["div"];
+    item_2Props?: JSX.IntrinsicElements["div"];
+    textProps?: JSX.IntrinsicElements["div"];
+    buttonProps?: JSX.IntrinsicElements["div"];
+  }
+>;
+
+export const Page = React.forwardRef((props, ref) => {
+  return applyOverrides(
+    { ...props, ref },
+    <div className={"uimix-PageK4dvYK"}>
+      <external__Header.Header
+        className={"uimix-PageK4dvYK__header"}
+        data-refID={["header"]}
+        {...{}}
+      />
+      <div className={"uimix-PageK4dvYK__frame"} data-refID={["frame"]}>
+        <external__Button.Button
+          className={"uimix-PageK4dvYK__button"}
+          data-refID={["button"]}
+          {...{
+            label: "Button1",
+            primary: true,
+            backgroundColor: "red",
+            size: "large",
+          }}
+        />
+        <img
+          className={"uimix-PageK4dvYK__image"}
+          data-refID={["image"]}
+          src={image1}
+          alt="Image"
+        />
+        <div
+          className={"uimix-PageK4dvYK__stack uimix-StackK4dvYK"}
+          data-refID={["stack"]}
+        >
+          <div
+            className={
+              "uimix-PageK4dvYK__stack-StackK4dvYK__item_0 uimix-StackK4dvYK__item_0"
+            }
+            data-refID={["stack", "item_0"]}
+          ></div>
+          <div
+            className={
+              "uimix-PageK4dvYK__stack-StackK4dvYK__item_1 uimix-StackK4dvYK__item_1"
+            }
+            data-refID={["stack", "item_1"]}
+          ></div>
+          <div
+            className={
+              "uimix-PageK4dvYK__stack-StackK4dvYK__hidden_Item uimix-StackK4dvYK__hidden_Item"
+            }
+            data-refID={["stack", "hidden_Item"]}
+          ></div>
+          <div
+            className={
+              "uimix-PageK4dvYK__stack-StackK4dvYK__item_2 uimix-StackK4dvYK__item_2"
+            }
+            data-refID={["stack", "item_2"]}
+          ></div>
+          <div
+            className={
+              "uimix-PageK4dvYK__stack-StackK4dvYK__text uimix-StackK4dvYK__text"
+            }
+            data-refID={["stack", "text"]}
+          >
+            {"Hello, world!"}
+          </div>
+        </div>
+        <external__Button1.default
+          className={"uimix-PageK4dvYK__mUIButton"}
+          data-refID={["mUIButton"]}
+          {...{ label: "Button", children: "MUI Button", variant: "contained" }}
+        />
+      </div>
+    </div>
+  );
+}) as React.FC<
+  JSX.IntrinsicElements["div"] & {
+    headerProps?: Partial<React.ComponentProps<typeof external__Header.Header>>;
+    frameProps?: JSX.IntrinsicElements["div"];
+    buttonProps?: Partial<React.ComponentProps<typeof external__Button.Button>>;
+    instanceProps?: JSX.IntrinsicElements["div"];
+    imageProps?: JSX.IntrinsicElements["div"];
+    stackProps?: JSX.IntrinsicElements["div"];
+    mUIButtonProps?: Partial<
+      React.ComponentProps<typeof external__Button1.default>
+    >;
+  }
+>;
+
+export const Card = React.forwardRef((props, ref) => {
+  return applyOverrides(
+    { ...props, ref },
+    <div className={"uimix-CardK4dvYK"}>
+      <div className={"uimix-CardK4dvYK__icon"} data-refID={["icon"]}>
+        <svg
+          className="uimix-CardK4dvYK__heroicons_code_bracket"
+          data-refID={["heroicons_code_bracket"]}
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M17.25 6.75L22.5 12L17.25 17.25M6.75 17.25L1.5 12L6.75 6.75M14.25 3.75L9.75 20.25"
+            stroke="#0EA5E9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+          />
+        </svg>
+      </div>
+      <div className={"uimix-CardK4dvYK__title"} data-refID={["title"]}>
+        {"React Components Import/Export"}
+      </div>
+      <div
+        className={"uimix-CardK4dvYK__description"}
+        data-refID={["description"]}
+      >
+        {
+          "Seamlessly work with React components, boosting your design-to-development workflow.\n"
+        }
+      </div>
+    </div>
+  );
+}) as React.FC<
+  JSX.IntrinsicElements["div"] & {
+    iconProps?: JSX.IntrinsicElements["div"];
+    heroicons_code_bracketProps?: JSX.IntrinsicElements["div"];
+    titleProps?: JSX.IntrinsicElements["div"];
+    descriptionProps?: JSX.IntrinsicElements["div"];
+  }
+>;

@@ -1,0 +1,49 @@
+{
+  "name": "desktop",
+  "version": "0.6.0",
+  "description": "My Electron application description",
+  "keywords": [],
+  "license": "MIT",
+  "author": {
+    "name": "Ryohei Ikegami",
+    "email": "iofg2100@gmail.com"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && node build.js",
+    "dev": "NODE_ENV=development run-z build start",
+    "lint": "eslint src",
+    "make": "electron-forge make",
+    "prepackage": "npm run build",
+    "package": "electron-forge package",
+    "package:dev": "NODE_ENV=development electron-forge package",
+    "publish": "electron-forge publish",
+    "start": "electron-forge start",
+    "watch": "node build.js --watch"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.0",
+    "chokidar": "^3.5.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.1.0",
+    "mkdirp": "^2.1.6",
+    "prettier": "^2.8.8"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "@electron-forge/publisher-github": "^6.1.1",
+    "@types/lodash": "^4.14.194",
+    "@types/prettier": "^2.7.2",
+    "electron": "23.3.0",
+    "esbuild": "^0.17.18",
+    "lodash": "^4.17.21",
+    "run-z": "^1.11.0",
+    "tiny-typed-emitter": "^2.1.0",
+    "typescript": "^5.0.4"
+  },
+  "productName": "UIMix"
+}

@@ -1,0 +1,4 @@
+{
+  "prebuiltAssets": ["@uimix/mui-assets"],
+  "assets": "./src/assets.ts"
+}

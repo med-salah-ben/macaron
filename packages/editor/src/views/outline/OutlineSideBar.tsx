@@ -1,0 +1,62 @@
+import { observer } from "mobx-react-lite";
+import {
+  SideBarTabsContent,
+  SideBarTabsList,
+  SideBarTabsRoot,
+  SideBarTabsTrigger,
+  ScrollArea,
+} from "@uimix/foundation/src/components";
+import { NodeTreeView } from "./NodeTreeView";
+import { Icon } from "@iconify/react";
+import { PageTreeView } from "./PageTreeView";
+
+export const OutlineSideBar: React.FC = observer(() => {
+  return (
+    // SideBar Navigation Page & Layers
+    <SideBarTabsRoot
+      defaultValue="layers"
+      className="w-64 flex flex-col contain-strict"
+    >
+         {/* SideBar Navigation Page & Layers */}
+      <SideBarTabsList>
+        <SideBarTabsTrigger value="pages">
+          <span className="flex gap-1.5 items-center">
+            <Icon
+              icon="material-symbols:topic-outline"
+              className="text-base opacity-60"
+            />
+            Pages
+          </span>
+        </SideBarTabsTrigger>
+        <SideBarTabsTrigger value="layers">
+          <span className="flex gap-1.5 items-center">
+            <Icon
+              icon="material-symbols:layers-outline"
+              className="text-base opacity-60"
+            />
+            Layers
+          </span>
+        </SideBarTabsTrigger>
+      </SideBarTabsList>
+      {/* Pages Left SideBar element */}
+      <SideBarTabsContent
+        value="pages"
+        className="flex-1 relative outline-none"
+      >
+        <ScrollArea className="absolute left-0 top-0 w-full h-full">
+          <PageTreeView />
+        </ScrollArea>
+      </SideBarTabsContent>
+      <SideBarTabsContent
+        value="layers"
+        className="flex-1 relative outline-none"
+      >
+        {/* Layers Left SideBar element */}
+        <ScrollArea className="absolute left-0 top-0 w-full h-full">
+          <NodeTreeView />
+        </ScrollArea>
+      </SideBarTabsContent>
+    </SideBarTabsRoot>
+  );
+});
+OutlineSideBar.displayName = "OutlineSideBar";

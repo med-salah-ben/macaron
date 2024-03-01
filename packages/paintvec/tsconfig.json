@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "sourceMap": false,
+    "declaration": true,
+    "removeComments": false,
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules"]
+}
